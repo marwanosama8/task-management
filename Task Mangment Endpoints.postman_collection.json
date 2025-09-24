@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "9232620f-8fed-4810-8630-a1f9626b475d",
+		"name": "Task Mangment Endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47414575"
+	},
+	"item": [
+		{
+			"name": "Tasks APIs",
+			"item": [
+				{
+					"name": "All Tasks",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "per_page",
+								"value": "2",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://task-manegar.test/api/v1/tasks?per_page=2",
+							"protocol": "http",
+							"host": [
+								"task-manegar",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Task",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://task-manegar.test/api/v1/tasks/4",
+							"protocol": "http",
+							"host": [
+								"task-manegar",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"title\": \"Finish project report\",\n  \"description\": \"Complete the final draft of the quarterly report and send it to the manager.\",\n  \"priority\": \"high\",\n  \"category_id\": \"2\",\n  \"due_date\": \"2025-09-30T17:00:00Z\",\n  \"completed\": false,\n  \"image_url\": \"https://example.com/images/report.png\",\n  \"created_at\": \"2025-09-20T10:30:00Z\",\n  \"updated_at\": \"2025-09-22T15:45:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://task-manegar.test/api/v1/tasks",
+							"protocol": "http",
+							"host": [
+								"task-manegar",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"title\": \"Finish project report\",\n  \"description\": \"Complete the final draft of the quarterly report and send it to the manager.\",\n  \"priority\": \"high\",\n  \"category_id\": \"2\",\n  \"due_date\": \"2025-09-30T17:00:00Z\",\n  \"completed\": false,\n  \"image_url\": \"https://example.com/images/report.png\",\n  \"created_at\": \"2025-09-20T10:30:00Z\",\n  \"updated_at\": \"2025-09-22T15:45:00Z\"\n}"
+						},
+						"url": {
+							"raw": "http://task-manegar.test/api/v1/tasks/22",
+							"protocol": "http",
+							"host": [
+								"task-manegar",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://task-manegar.test/api/v1/tasks/2",
+							"protocol": "http",
+							"host": [
+								"task-manegar",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "EXhlsa2d882399230",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
