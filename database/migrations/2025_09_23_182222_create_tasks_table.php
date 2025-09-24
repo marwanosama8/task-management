@@ -12,8 +12,7 @@ return new class extends Migration {
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('priority');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreignId('category_id')->references('id')->on('categories');
             $table->date('due_date');
             $table->text('image_url')->nullable();
             $table->boolean('completed');
