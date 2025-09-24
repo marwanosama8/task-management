@@ -1,4 +1,4 @@
-Laravel Project
+ Task Management project for **Osolutions** — this task took approximately 7 hours to complete, spread over two separate days.
 
 ## Installation
 
