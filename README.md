@@ -1,61 +1,69 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Laravel Project
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Installation
 
-## About Laravel
+1. Clone the repository:
+   ```git clone https://github.com/marwanosama8/task-management.git```
+   and
+   ```cd task-management ```
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+2. Install PHP dependencies:
+  ```composer install```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+3. Copy the example environment file and configure it:
+  ```cp .env.example .env```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+4. Generate the application key:
+    ```php artisan key:generate```
 
-## Learning Laravel
+5. Run the database migrations:
+   ```php artisan migrate```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+6. Seed the database (optional but recommended):
+   ```php artisan db:seed```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+7. Set your API Key in the .env file:
+   ```API_KEY=EX398nh32y58ddbl```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## API Testing
 
-## Laravel Sponsors
+In the root folder, you will find a Postman collection (Task Mangment Endpoints.postman_collection.json).
+Import it into Postman to test all the available API endpoints.
+Each endpoint in the collection includes **example request and response bodies** to help you understand the expected output.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Development Server
 
-### Premium Partners
+Run the Laravel development server:
+   ```php artisan serve```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Your app will be available at:
+   http://127.0.0.1:8000
+   
+## Project Architecture & Best Practices
 
-## Contributing
+- **Repository Design Pattern**  
+  Used to separate database interaction logic from controllers. This keeps controllers clean and focused only on request handling and response formatting.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **Centralized Error Handling**  
+  Implemented a custom error handler to unify and customize the structure of API responses when errors occur, making them more consistent and developer-friendly.
 
-## Code of Conduct
+- **API Resource Routes**  
+  Used the `ApiResource` method in the Route facade to quickly generate full RESTful routes for resources, saving time and reducing repetitive code.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- **Service for Image Generation**  
+  Created a dedicated Image Generator Service to achieve proper separation of concerns and keep image-related logic isolated from other parts of the app.
 
-## Security Vulnerabilities
+- **Repository Service Provider**  
+  Added a custom Repository Service Provider to bind abstract classes to their concrete implementations.  
+  This makes dependency injection cleaner and helps maintain loose coupling throughout the application.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- **Foreign ID for Database Relationships**  
+  Used the foreignId method in the tasks table migration to create a foreign key relationship between category_id in the tasks table and the id field in the categories table,
+  ensuring data integrity and proper relational mapping.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Requirements ##
+
+- PHP >= 8.1
+- Composer
+- MySQL or PostgreSQL (or another supported database)
